@@ -107,16 +107,6 @@ async function deployVault(
     return vault; 
 }
 
-async function deployDepositVault(
-    vaultAddress,
-    baseTokenAddress
-) {
-    return await utils.deployContractSilent(constants.DEPOSIT_VAULT_CONTRACT_ID, [
-        vaultAddress, 
-        baseTokenAddress
-    ]);
-}
-
 async function setInitialBondTokenRoles(vault, bondToken) {
     grantRole(bondToken, constants.roles.TOKEN_MINTER, vault.address);
     //grantRole(bondToken, constants.roles.TOKEN_BURNER, vault.address);
@@ -205,7 +195,6 @@ async function getSecurityManager(vaultContract) {
 module.exports = {
     deployToken,
     deployVault,
-    deployDepositVault,
     deployStableCoin,
     deployMathTestContract,
     deployTestToken,

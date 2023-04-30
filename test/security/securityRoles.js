@@ -7,7 +7,7 @@ const { grantRole, renounceRole, hasRole, revokeRole } = require("../util/securi
 const { expectRevert, expectEvent } = require("../util/testUtils");
 
 describe(constants.SECURITY_CONTRACT_ID + ": Security Permissions", function () {
-    let vault, bondToken, baseToken, securityManager, whitelist, depositVault;  //contracts
+    let vault, bondToken, baseToken, securityManager, whitelist;  //contracts
     let admin, pauser, minter, burner, upgrader, generalManager, lifecycleManager, 
         whitelistManager, addr1, addr2; 
     let nonAdminRoles, allRoles = []; 
@@ -206,19 +206,6 @@ describe(constants.SECURITY_CONTRACT_ID + ": Security Permissions", function () 
             );
     }
 
-    async function assertDepositVaultAdminWithdrawPermission(account, expectAllowed = true) {
-        const func = async () => { await vault.connect(account).adminWithdraw(1); }
-        if (expectAllowed)
-            await assertCan(func);
-        else
-            await assertCannot(
-                func,
-                constants.errorMessages.CUSTOM_ACCESS_CONTROL(
-                    constants.roles.ADMIN, account.address
-                )
-            );
-    }
-
     async function assertSetMinimumDepositPermission(account, expectAllowed = true) {
         const func = async () => { await vault.connect(account).setMinimumDeposit(0); }
         if (expectAllowed)
@@ -381,7 +368,6 @@ describe(constants.SECURITY_CONTRACT_ID + ": Security Permissions", function () 
         await assertSetSecurityManagerPermission(vault, account, expectAllowed);
         await assertSetSecurityManagerPermission(bondToken, account, expectAllowed);
         await assertVaultAdminWithdrawPermission(account, expectAllowed);
-        await assertDepositVaultAdminWithdrawPermission(account, expectAllowed);
         await assertSetVaultAddressPermission(account, expectAllowed);
     }
 

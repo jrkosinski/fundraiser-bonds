@@ -16,17 +16,6 @@ async function deployToken() {
     ]);
 }
 
-async function deployDepositVault(
-    vaultAddress, 
-    baseTokenAddress
-) {
-    const depositVault = await utils.deployContractSilent(constants.DEPOSIT_VAULT_CONTRACT_ID, [
-        vaultAddress,
-        baseTokenAddress
-    ]);
-    return depositVault;
-}
-
 async function deployVault(
     baseTokenAddress,
     bondTokenAddress = null,
@@ -86,6 +75,5 @@ module.exports = {
     deployWhitelist,
     deploySecurityManager,
     deployContractSizer,
-    deployDepositVault,
     deployAll
 };

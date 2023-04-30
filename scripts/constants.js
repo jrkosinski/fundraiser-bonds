@@ -16,7 +16,6 @@ module.exports = {
     STABLECOIN_CONTRACT_ID: "MockStableCoin",
     SECURITY_CONTRACT_ID: "SecurityManager",
     WHITELIST_CONTRACT_ID: "Whitelist",
-    DEPOSIT_VAULT_CONTRACT_ID: "DepositVault",
     
     NETWORK: 'bsc_testnet4', 
     

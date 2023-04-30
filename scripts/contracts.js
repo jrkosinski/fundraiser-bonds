@@ -26,10 +26,6 @@ function getWhitelistAddress() {
     return getCurrentConfig().WHITELIST_ADDRESS;
 }
 
-function getDepositVaultAddress() {
-    return getCurrentConfig().DEPOSIT_VAULT_ADDRESS;
-}
-
 async function getVault() {
     return await ethers.getContractAt(constants.VAULT_CONTRACT_ID, getVaultAddress()); 
 }
@@ -50,10 +46,6 @@ async function getWhitelist() {
     return await ethers.getContractAt(constants.WHITELIST_CONTRACT_ID, getWhitelistAddress());
 }
 
-async function getDepositVault() {
-    return await ethers.getContractAt(constants.DEPOSIT_VAULT_CONTRACT_ID, getDepositVaultAddress());
-}
-
 module.exports = {
     getCurrentConfig, 
     getVaultAddress, 
@@ -62,13 +54,11 @@ module.exports = {
     getVaultAddress, 
     getSecurityManagerAddress, 
     getWhitelistAddress,
-    getDepositVaultAddress, 
     
     getVault,
     getBaseToken,
     getBondToken,
     getVault,
     getSecurityManager,
-    getWhitelist,
-    getDepositVault
+    getWhitelist
 }
