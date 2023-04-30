@@ -1,7 +1,7 @@
 # Fundraiser Bond Vault 
 
-* [unit tests](tree/main/test)
-* [contracts](tree/main/contracts)
+* [unit tests](/tree/main/test)
+* [contracts](/tree/main/contracts)
 * [docs](tree/main/docs)
 
 # Setup
