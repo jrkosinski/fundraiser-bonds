@@ -332,7 +332,7 @@ describe(constants.SECURITY_CONTRACT_ID + ": Security Permissions", function () 
         }
     }
 
-    async function assertUpgradeVaultTokenPermission(account, expectAllowed = true) {
+    async function assertUpgradeBondTokenPermission(account, expectAllowed = true) {
         const v2 = await utils.deployContractSilent("BondTokenV2");
         const func1 = async () => {
             await bondToken.connect(account).upgradeTo(v2.address);
@@ -404,7 +404,7 @@ describe(constants.SECURITY_CONTRACT_ID + ": Security Permissions", function () 
 
     async function assertUpgraderPermissions(account, expectAllowed = true) {
         await assertUpgradeVaultPermission(account, expectAllowed);
-        await assertUpgradeVaultTokenPermission(account, expectAllowed);
+        await assertUpgradeBondTokenPermission(account, expectAllowed);
     }
     
     async function hasExpectedRoles(account, allowedRoles) {

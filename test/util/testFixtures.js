@@ -173,15 +173,10 @@ class TestVault {
         this._deposits.push(amount);
         this._depositsTotal += amount; 
     }
-    
-    async withdrawDirect(user, amount) {
-        await this.bondToken.connect(user).transfer(this.address, amount);
-        await this.vault.withdrawFor(amount, user.address);
-        this._withdrawalsTotal += this.convertToBaseToken(amount); 
-    }
 
-    async withdrawNormal(user, amount) {
-        await this.withdrawDirect(user, amount);
+    async withdraw(user, amount) {
+        await this.bondToken.connect(user).transfer(this.address, amount);
+        this._withdrawalsTotal += this.convertToBaseToken(amount); 
     }
 
     disableLedger() {
@@ -253,12 +248,12 @@ class TestVaultUser {
 
         if (this.vault.directWithdraw) {
             //await this.vault.bondToken.connect(this.user).transfer(this.vault.address, amount);
-            await this.vault.withdrawDirect(this.user, amount); 
+            await this.vault.withdraw(this.user, amount); 
         }
         else {
             //await this.vault.bondToken.connect(this.user).approve(this.vault.address, amount);
             //await this.vault.vault.connect(this.user).withdraw(amount);
-            await this.vault.withdrawNormal(this.user, amount); 
+            await this.vault.withdraw(this.user, amount); 
         }
 
         this._lockedAmount -= this.vault.convertToBaseToken(amount);
