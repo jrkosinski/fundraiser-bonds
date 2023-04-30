@@ -1,8 +1,8 @@
 # Fundraiser Bond Vault 
 
-* [unit tests](/tree/main/test)
-* [contracts](/tree/main/contracts)
-* [docs](tree/main/docs)
+* [unit tests](https://github.com/jrkosinski/fundraiser-bonds/tree/main/test)
+* [contracts](https://github.com/jrkosinski/fundraiser-bonds/tree/main/contracts)
+* [docs](https://github.com/jrkosinski/fundraiser-bonds/tree/main/docs)
 
 # Setup
 * clone this repository 
